@@ -1,0 +1,162 @@
+name: CI
+
+# on: [push, pull_request]
+on: [repository_dispatch, workflow_dispatch]
+
+jobs:
+  base:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          pip install kiwisolver==1.4.9
+      - run: |
+          pytest -n auto --durations=10 --pyargs networkx
+    env:
+      PYTEST_XDIST_TESTRUNUID: c377fba90011451f8ad4a6457257c612
+      PYTEST_XDIST_WORKER: gw11
+      PYTEST_XDIST_WORKER_COUNT: '12'
+
+  default:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          pip install kiwisolver==1.4.9
+      - run: |
+          python -Werror -c "import networkx"
+      - run: |
+          pytest -n auto --doctest-modules --durations=10 --pyargs networkx
+    env:
+      PYTEST_XDIST_TESTRUNUID: 875d55617f864cd883118f71dbcdef77
+
+  default-without-scipy:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          pip install kiwisolver==1.4.9
+      - run: |
+          python -Werror -c "import networkx"
+      - run: |
+          pytest -n auto --doctest-modules --durations=10 --pyargs networkx
+
+  dispatch:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          pip install kiwisolver==1.4.9
+      - run: |
+          NETWORKX_TEST_BACKEND=nx_loopback pytest -n auto --doctest-modules --durations=10 --pyargs networkx
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    env:
+      NETWORKX_TEST_BACKEND: nx_loopback
+    timeout-minutes: 386.3579460104307
+
+  extra:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          pip install kiwisolver==1.4.9
+      - run: |
+          pytest -n auto --doctest-modules --durations=10 --pyargs networkx
+    env:
+      PYTEST_XDIST_TESTRUNUID: f24c900be4f4492d9cbc6cbeb3c0ef74
+      PYTEST_XDIST_WORKER: gw22
+      PYTEST_XDIST_WORKER_COUNT: '12'
+
+  prerelease:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          pip install kiwisolver==1.4.9
+      - run: |
+          pytest -n auto --doctest-modules --durations=10 --pyargs networkx
+
+  slow-tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          pip install kiwisolver==1.4.9
+      - run: |
+          pytest -n auto --durations=20 --runslow -m slow --pyargs networkx
+    env:
+      PYTEST_XDIST_TESTRUNUID: d55221199370496b819e8ebc9b67c21b
+      PYTEST_XDIST_WORKER_COUNT: '12'

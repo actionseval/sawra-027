@@ -1,0 +1,315 @@
+name: test
+# on: push
+on: [repository_dispatch, workflow_dispatch]
+jobs:
+  base:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-extra fonts-dejavu-mono fonts-lato fonts-liberation fonts-noto-color-emoji graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
+          pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
+      - run: |
+          pytest -n auto --durations=10 --pyargs networkx
+    env:
+      ACCEPT_EULA: Y
+      BOOTSTRAP_HASKELL_NONINTERACTIVE: '1'
+      COLUMNS: '254'
+      DEBIAN_FRONTEND: noninteractive
+      DOTNET_MULTILEVEL_LOOKUP: '0'
+      DOTNET_NOLOGO: '1'
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
+      HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS: '3650'
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOSTNAME: pop-os
+      ImageOS: ubuntu24
+      ImageVersion: 20260105.202.1
+      LC_CTYPE: C.UTF-8
+      LINES: '64'
+      POWERSHELL_DISTRIBUTION_CHANNEL: GitHub-Actions-ubuntu24
+      PYTEST_VERSION: 9.0.2
+      PYTEST_XDIST_TESTRUNUID: c377fba90011451f8ad4a6457257c612
+      PYTEST_XDIST_WORKER: gw11
+      PYTEST_XDIST_WORKER_COUNT: '12'
+      SHLVL: '1'
+      TERM: xterm
+      _PYI_LINUX_PROCESS_NAME: sawra
+      _PYI_PARENT_PROCESS_LEVEL: '1'
+  default:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
+          pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
+      - run: |
+          python -Werror -c "import networkx"
+      - run: |
+          pytest -n auto --doctest-modules --durations=10 --pyargs networkx
+    env:
+      ACCEPT_EULA: Y
+      BOOTSTRAP_HASKELL_NONINTERACTIVE: '1'
+      COLUMNS: '254'
+      DEBIAN_FRONTEND: noninteractive
+      DOTNET_MULTILEVEL_LOOKUP: '0'
+      DOTNET_NOLOGO: '1'
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
+      HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS: '3650'
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOSTNAME: pop-os
+      ImageOS: ubuntu24
+      ImageVersion: 20260105.202.1
+      LC_CTYPE: C.UTF-8
+      LINES: '64'
+      POWERSHELL_DISTRIBUTION_CHANNEL: GitHub-Actions-ubuntu24
+      PYTEST_VERSION: 9.0.2
+      PYTEST_XDIST_TESTRUNUID: 875d55617f864cd883118f71dbcdef77
+      PYTEST_XDIST_WORKER: gw11
+      PYTEST_XDIST_WORKER_COUNT: '12'
+      SHLVL: '1'
+      TERM: xterm
+      _PYI_LINUX_PROCESS_NAME: sawra
+      _PYI_PARENT_PROCESS_LEVEL: '1'
+  default-without-scipy:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
+          pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
+      - run: |
+          python -Werror -c "import networkx"
+      - run: |
+          pytest -n auto --doctest-modules --durations=10 --pyargs networkx
+    env:
+      ACCEPT_EULA: Y
+      BOOTSTRAP_HASKELL_NONINTERACTIVE: '1'
+      COLUMNS: '254'
+      DEBIAN_FRONTEND: noninteractive
+      DOTNET_MULTILEVEL_LOOKUP: '0'
+      DOTNET_NOLOGO: '1'
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
+      HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS: '3650'
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOSTNAME: pop-os
+      ImageOS: ubuntu24
+      ImageVersion: 20260105.202.1
+      LC_CTYPE: C.UTF-8
+      LINES: '64'
+      POWERSHELL_DISTRIBUTION_CHANNEL: GitHub-Actions-ubuntu24
+      PYTEST_VERSION: 9.0.2
+      PYTEST_XDIST_TESTRUNUID: 2c786d9fcc3e4861842b1c000ff8ca28
+      PYTEST_XDIST_WORKER: gw11
+      PYTEST_XDIST_WORKER_COUNT: '12'
+      SHLVL: '1'
+      TERM: xterm
+      _PYI_LINUX_PROCESS_NAME: sawra
+      _PYI_PARENT_PROCESS_LEVEL: '1'
+  dispatch:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
+          pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
+      - run: |
+          NETWORKX_TEST_BACKEND=nx_loopback pytest -n auto --doctest-modules --durations=10 --pyargs networkx
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    env:
+      ACCEPT_EULA: Y
+      BOOTSTRAP_HASKELL_NONINTERACTIVE: '1'
+      COLUMNS: '254'
+      DEBIAN_FRONTEND: noninteractive
+      DOTNET_MULTILEVEL_LOOKUP: '0'
+      DOTNET_NOLOGO: '1'
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
+      HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS: '3650'
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOSTNAME: pop-os
+      ImageOS: ubuntu24
+      ImageVersion: 20260105.202.1
+      LC_CTYPE: C.UTF-8
+      LINES: '64'
+      NETWORKX_TEST_BACKEND: nx_loopback
+      POWERSHELL_DISTRIBUTION_CHANNEL: GitHub-Actions-ubuntu24
+      PYTEST_VERSION: 9.0.2
+      PYTEST_XDIST_TESTRUNUID: 023f4a9522fe490cb913596ae20db7e0
+      PYTEST_XDIST_WORKER: gw11
+      PYTEST_XDIST_WORKER_COUNT: '12'
+      SHLVL: '1'
+      TERM: xterm
+      _PYI_LINUX_PROCESS_NAME: sawra
+      _PYI_PARENT_PROCESS_LEVEL: '1'
+    timeout-minutes: 386.3579460104307
+  extra:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
+          pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
+      - run: |
+          pytest -n auto --doctest-modules --durations=10 --pyargs networkx
+    env:
+      ACCEPT_EULA: Y
+      BOOTSTRAP_HASKELL_NONINTERACTIVE: '1'
+      COLUMNS: '254'
+      DEBIAN_FRONTEND: noninteractive
+      DOTNET_MULTILEVEL_LOOKUP: '0'
+      DOTNET_NOLOGO: '1'
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
+      HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS: '3650'
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOSTNAME: pop-os
+      ImageOS: ubuntu24
+      ImageVersion: 20260105.202.1
+      LC_CTYPE: C.UTF-8
+      LINES: '64'
+      POWERSHELL_DISTRIBUTION_CHANNEL: GitHub-Actions-ubuntu24
+      PYTEST_VERSION: 9.0.2
+      PYTEST_XDIST_TESTRUNUID: f24c900be4f4492d9cbc6cbeb3c0ef74
+      PYTEST_XDIST_WORKER: gw22
+      PYTEST_XDIST_WORKER_COUNT: '12'
+      SHLVL: '1'
+      TERM: xterm
+      _PYI_LINUX_PROCESS_NAME: sawra
+      _PYI_PARENT_PROCESS_LEVEL: '1'
+  prerelease:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
+          pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
+      - run: |
+          pytest -n auto --doctest-modules --durations=10 --pyargs networkx
+    env:
+      ACCEPT_EULA: Y
+      BOOTSTRAP_HASKELL_NONINTERACTIVE: '1'
+      COLUMNS: '254'
+      DEBIAN_FRONTEND: noninteractive
+      DOTNET_MULTILEVEL_LOOKUP: '0'
+      DOTNET_NOLOGO: '1'
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
+      HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS: '3650'
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOSTNAME: pop-os
+      ImageOS: ubuntu24
+      ImageVersion: 20260105.202.1
+      LC_CTYPE: C.UTF-8
+      LINES: '64'
+      POWERSHELL_DISTRIBUTION_CHANNEL: GitHub-Actions-ubuntu24
+      PYTEST_VERSION: 9.0.2
+      PYTEST_XDIST_TESTRUNUID: 3cd00c99842440e181a5be4697d3d6af
+      PYTEST_XDIST_WORKER: gw11
+      PYTEST_XDIST_WORKER_COUNT: '12'
+      SHLVL: '1'
+      TERM: xterm
+      _PYI_LINUX_PROCESS_NAME: sawra
+      _PYI_PARENT_PROCESS_LEVEL: '1'
+  slow-tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python-version:
+          - '3.13'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          apt install -y bash coreutils libc-bin libc6:amd64 libcdt5:amd64 libcgraph6:amd64 libgvc6 libltdl7:amd64 libpathplan4:amd64 libpython3.13-stdlib:amd64 locales ncurses-base openssl python3.13 tzdata
+          pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
+      - run: |
+          pytest -n auto --durations=20 --runslow -m slow --pyargs networkx
+    env:
+      ACCEPT_EULA: Y
+      BOOTSTRAP_HASKELL_NONINTERACTIVE: '1'
+      COLUMNS: '254'
+      DEBIAN_FRONTEND: noninteractive
+      DOTNET_MULTILEVEL_LOOKUP: '0'
+      DOTNET_NOLOGO: '1'
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
+      HOMEBREW_CLEANUP_PERIODIC_FULL_DAYS: '3650'
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOSTNAME: pop-os
+      ImageOS: ubuntu24
+      ImageVersion: 20260105.202.1
+      LC_CTYPE: C.UTF-8
+      LINES: '64'
+      POWERSHELL_DISTRIBUTION_CHANNEL: GitHub-Actions-ubuntu24
+      PYTEST_VERSION: 9.0.2
+      PYTEST_XDIST_TESTRUNUID: d55221199370496b819e8ebc9b67c21b
+      PYTEST_XDIST_WORKER: gw11
+      PYTEST_XDIST_WORKER_COUNT: '12'
+      SHLVL: '1'
+      TERM: xterm
+      _PYI_LINUX_PROCESS_NAME: sawra
+      _PYI_PARENT_PROCESS_LEVEL: '1'

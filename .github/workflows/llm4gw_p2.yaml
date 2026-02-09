@@ -1,0 +1,96 @@
+name: test
+# on:
+#   push:
+#     branches:
+#       - main
+#     tags:
+#       - '*'
+#   pull_request:
+#     branches:
+#       - main
+on: [repository_dispatch, workflow_dispatch]
+
+jobs:
+  base:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 
+        run: echo "Step 1"
+      - name: 
+        run: echo "Step 2"
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Execute Tests
+        run: pytest
+
+  default:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 
+        run: echo "Step 1"
+      - name: 
+        run: echo "Step 2"
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Execute Tests
+        run: pytest
+
+  default-without-scipy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 
+        run: echo "Step 1"
+      - name: 
+        run: echo "Step 2"
+      - name: Install Dependencies
+        run: pip install --no-deps -r requirements.txt
+      - name: Execute Tests
+        run: pytest
+
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 
+        run: echo "Step 1"
+      - name: 
+        run: echo "Step 2"
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Execute Tests
+        run: pytest
+
+  extra:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 
+        run: echo "Step 1"
+      - name: 
+        run: echo "Step 2"
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Execute Tests
+        run: pytest
+
+  prerelease:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 
+        run: echo "Step 1"
+      - name: 
+        run: echo "Step 2"
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Execute Tests
+        run: pytest
+
+  slow-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 
+        run: echo "Step 1"
+      - name: 
+        run: echo "Step 2"
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Execute Tests
+        run: pytest
