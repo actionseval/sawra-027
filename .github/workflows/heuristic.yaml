@@ -17,7 +17,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
         run: |
-          apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-extra fonts-dejavu-mono fonts-lato fonts-liberation fonts-noto-color-emoji graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
+          # apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-extra fonts-dejavu-mono fonts-lato fonts-liberation fonts-noto-color-emoji graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
           pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
       - run: |
           pytest -n auto --durations=10 --pyargs networkx
@@ -60,7 +60,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
         run: |
-          apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
+          # apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
           pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
       - run: |
           python -Werror -c "import networkx"
@@ -105,7 +105,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
         run: |
-          apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
+          # apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
           pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
       - run: |
           python -Werror -c "import networkx"
@@ -151,7 +151,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
         run: |
-          apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
+          # apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
           pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
       - run: |
           NETWORKX_TEST_BACKEND=nx_loopback pytest -n auto --doctest-modules --durations=10 --pyargs networkx
@@ -199,7 +199,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
         run: |
-          apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
+          # apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
           pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
       - run: |
           pytest -n auto --doctest-modules --durations=10 --pyargs networkx
@@ -242,7 +242,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
         run: |
-          apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
+          # apt install -y bash coreutils fontconfig-config fonts-dejavu-core fonts-dejavu-mono graphviz libblkid1:amd64 libbrotli1:amd64 libbsd0:amd64 libc-bin libc6:amd64 libcairo2:amd64 libcdt5:amd64 libcgraph6:amd64 libdatrie1:amd64 libfontconfig1:amd64 libfreetype6:amd64 libfribidi0:amd64 libglib2.0-0t64:amd64 libgraphite2-3:amd64 libgts-0.7-5t64:amd64 libgvc6 libharfbuzz0b:amd64 libltdl7:amd64 libmd0:amd64 libmount1:amd64 libpango-1.0-0:amd64 libpangocairo-1.0-0:amd64 libpangoft2-1.0-0:amd64 libpathplan4:amd64 libpcre2-8-0:amd64 libpixman-1-0:amd64 libpng16-16t64:amd64 libpython3.13-stdlib:amd64 libselinux1:amd64 libthai0:amd64 libx11-6:amd64 libxau6:amd64 libxcb-render0:amd64 libxcb-shm0:amd64 libxcb1:amd64 libxdmcp6:amd64 libxext6:amd64 libxrender1:amd64 locales ncurses-base openssl python3.13 tzdata
           pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
       - run: |
           pytest -n auto --doctest-modules --durations=10 --pyargs networkx
@@ -285,7 +285,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
         run: |
-          apt install -y bash coreutils libc-bin libc6:amd64 libcdt5:amd64 libcgraph6:amd64 libgvc6 libltdl7:amd64 libpathplan4:amd64 libpython3.13-stdlib:amd64 locales ncurses-base openssl python3.13 tzdata
+          # apt install -y bash coreutils libc-bin libc6:amd64 libcdt5:amd64 libcgraph6:amd64 libgvc6 libltdl7:amd64 libpathplan4:amd64 libpython3.13-stdlib:amd64 locales ncurses-base openssl python3.13 tzdata
           pip install cycler==0.12.1 kiwisolver==1.4.9 pytz==2025.2
       - run: |
           pytest -n auto --durations=20 --runslow -m slow --pyargs networkx
